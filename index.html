@@ -105,17 +105,55 @@
             text-transform: uppercase;
         }
         
-        .menu-toggle {
+.menu-toggle {
             display: none;
             background: #0a0a0f;
             color: #00ff88;
             border: none;
-            padding: 10px 14px;
+            padding: 8px 12px;
             border-radius: 6px;
             cursor: pointer;
-            font-size: 24px;
-            font-weight: bold;
+            font-size: 22px;
+            line-height: 1;
         }
+        
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: inline-block !important;
+            }
+        }
+        
+        /* MOBILE */
+        @media (max-width: 768px) {
+            header {
+                height: 60px;
+                padding: 0 16px;
+                background: #00ff88;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .header-right {
+                display: none !important;
+            }
+            
+            .logo span {
+                color: #0a0a0f;
+            }
+            
+            .menu-toggle {
+                display: block !important;
+                background: #0a0a0f;
+                color: #00ff88;
+                border: none;
+                padding: 8px 12px;
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 22px;
+                line-height: 1;
+            }
         
         /* HERO */
         .hero {
@@ -454,15 +492,26 @@
             </nav>
             <a href="#download" class="btn-download">Descargar</a>
         </div>
-        <button class="menu-toggle" onclick="document.querySelector('.nav-mobile').classList.toggle('active')">
+        <button id="menu-btn" class="menu-toggle" style="display: inline-block;">
             ☰
         </button>
+        
+        <script>
+            document.getElementById('menu-btn').addEventListener('click', function() {
+                var nav = document.querySelector('.nav-mobile');
+                if (nav.style.display === 'flex') {
+                    nav.style.display = 'none';
+                } else {
+                    nav.style.display = 'flex';
+                }
+            });
+        </script>
     </header>
     
-    <nav class="nav-mobile">
-        <a href="#features" onclick="document.querySelector('.nav-mobile').classList.remove('active')">Características</a>
-        <a href="#video" onclick="document.querySelector('.nav-mobile').classList.remove('active')">Video</a>
-        <a href="#download" onclick="document.querySelector('.nav-mobile').classList.remove('active')">Descargar</a>
+    <nav class="nav-mobile" style="display: none;">
+        <a href="#features">Características</a>
+        <a href="#video">Video</a>
+        <a href="#download">Descargar</a>
     </nav>
     
     <section class="hero">
