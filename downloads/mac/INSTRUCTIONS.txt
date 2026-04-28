@@ -1,0 +1,86 @@
+══════════════════════════════════════════════════════════════
+              AdbHunter - Manual de Instalación (Mac)    
+══════════════════════════════════════════════════════════════
+
+REQUISITOS
+═════════
+
+1. ADB (Android Debug Bridge)
+   ─────────────────────
+   Instalar con Homebrew:
+   
+   brew install --cask android-platform-tools
+   
+   O descargar desde:
+   https://developer.android.com/studio/releases/platform-tools
+
+
+CONEXIÓN DEL DISPOSITIVO
+═════════════════════
+
+USB:
+1. Conectar Android al Mac por USB
+2. En el celu: Aceptar popup "Depuración USB"
+3. Seleccionar "Permitir siempre" si querés
+4. Abrir AdbHunter.app
+
+WIRELESS (Sin cables):
+1. Primero conectar por USB
+2. Abrir AdbHunter
+3. Click botón WiFi
+4. En el celu: Opciones de desarrollador >
+   Depuración inalámbrica > ACTIVAR
+5. Click "Vincular" en la app
+6. Ingresar IP:puerto (del celu) y código
+7. Desconectar USB
+8. Ya funciona sin cables!
+
+
+CÓMO USAR
+════════
+
+1. Extraer el archivo .zip descargado
+2. Doble click en AdbHunter.app
+   - Si da error de seguridad, ir a:
+   Preferencias del Sistema > Privacidad y Seguridad
+   > Seguridad y abrir igual
+3. Esperar a que detecte el dispositivo
+4. Click INICIAR para empezar a monitorear
+5. Cuando aparece una app sospechosa:
+   - Click sobre la app en el historial
+   - Elegir acción:
+
+   🔴 FORCE STOP: Forzar cierre de la app
+   🔴 DESINSTALAR: Eliminar completamente  
+   🟣 + Whitelist: Proteger app
+   🔵 REFRESH: Actualizar lista
+   🟠 WiFi: Conectar sin cables
+   ℹ Info: Información del desarrollador
+
+
+TROUBLESHOOTING
+═════════════
+
+❌ "ADB no instalado"
+   → brew install --cask android-platform-tools
+   → En Terminal: adb version
+
+❌ "Sin equipo conectado"
+   → Verificar Depuración USB activada
+   → Desconectar y reconectar USB
+   → Aceptar popup en el celu
+
+❌ "Permiso denegado"
+   → En el celu: Revocar autorizaciones USB
+   → Desconectar y reconectar USB
+
+
+CONTACTO
+═══════
+📱 Telegram: @Est3banj
+🔗 GitHub: github.com/Est3banj
+
+⚠️ USAR CON RESPONSABILIDAD
+   No eliminar apps del sistema!
+
+══════════════════════════════════════════════════════════════
