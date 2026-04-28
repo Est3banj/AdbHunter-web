@@ -113,14 +113,6 @@
             border-radius: 6px;
             cursor: pointer;
             font-size: 22px;
-            line-height: 1;
-        }
-        
-        /* MOBILE */
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: inline-block !important;
-            }
         }
         
         /* MOBILE */
@@ -153,6 +145,7 @@
                 font-size: 22px;
                 line-height: 1;
             }
+        }
         
         /* HERO */
         .hero {
@@ -390,15 +383,15 @@
             border-radius: 8px;
         }
         
-        /* FOOTER */
-        }
-        
         /* MOBILE */
         @media (max-width: 768px) {
             header {
                 height: 60px;
                 padding: 0 16px;
                 background: #00ff88;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
             }
             
             .header-right {
@@ -410,34 +403,17 @@
             }
             
             .menu-toggle {
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                display: block;
                 background: #0a0a0f;
                 color: #00ff88;
                 border: none;
-                padding: 10px 14px;
-                border-radius: 8px;
+                padding: 8px 12px;
+                border-radius: 6px;
                 cursor: pointer;
-                font-size: 24px;
-                font-weight: bold;
+                font-size: 22px;
             }
-            
-            .nav-mobile {
-                display: none;
-                position: fixed;
-                top: 60px;
-                left: 0;
-                right: 0;
-                background: #0a0a0f;
-                padding: 20px;
-                flex-direction: column;
-                gap: 10px;
-                z-index: 999;
-            }
-            
-            .nav-mobile.active {
-                display: flex;
+        }
+    </style>
             }
             
             .nav-mobile a {
