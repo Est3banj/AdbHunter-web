@@ -1,6 +1,7 @@
 {
   "build": {
-    "env": {}
+    "command": "echo 'Static site'",
+    "outputDirectory": "."
   },
-  "framework": null
+  "framework": "static"
 }
