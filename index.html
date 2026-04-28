@@ -359,14 +359,27 @@
             header {
                 height: 60px;
                 padding: 0 16px;
+                background: #00ff88;
             }
             
             .header-right {
                 display: none;
             }
             
+            .logo span {
+                color: #0a0a0f;
+            }
+            
             .menu-toggle {
-                display: block;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: #0a0a0f;
+                color: #00ff88;
+                border: none;
+                padding: 10px;
+                border-radius: 8px;
+                cursor: pointer;
             }
             
             .nav-mobile {
@@ -375,10 +388,11 @@
                 top: 60px;
                 left: 0;
                 right: 0;
-                background: #00ff88;
+                background: #0a0a0f;
                 padding: 20px;
                 flex-direction: column;
                 gap: 10px;
+                z-index: 999;
             }
             
             .nav-mobile.active {
@@ -386,13 +400,20 @@
             }
             
             .nav-mobile a {
-                color: #0a0a0f;
+                color: #00ff88;
                 text-decoration: none;
                 font-weight: 600;
                 font-size: 18px;
-                padding: 12px;
-                background: rgba(0,0,0,0.1);
+                padding: 14px;
+                background: #1a1a2e;
                 border-radius: 8px;
+                border: 1px solid #00ff88;
+                text-align: center;
+            }
+            
+            .nav-mobile a:hover {
+                background: #00ff88;
+                color: #0a0a0f;
             }
             
             .hero h1 {
