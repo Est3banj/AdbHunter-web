@@ -3,62 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AdbHunter - Elimina Malware de tu Android v2</title>
-    <meta name="description" content="Herramienta profesional para detectar y eliminar aplicaciones maliciosas en Android via ADB">
+    <title>AdbHunter PRO v2.0 — Android Security &amp; Rescue Suite</title>
+    <meta name="description" content="AdbHunter PRO v2.0: Suite profesional de ciberseguridad, rescate y desinfección de dispositivos Android sin Root. Shannon Entropy Threat Scoring, Respaldo TAR a 40 MB/s, Espejo Scrcpy a 60 FPS y Certificados ISO 32000-1 SHA-256.">
+    <meta name="keywords" content="AdbHunter, Android Security, ADB Rescue, Shannon Entropy, Scrcpy, Safe Debloater, Android Malware, Data Backup TAR, SHA-256 Certificate">
     <link rel="icon" type="image/png" href="logo.png">
+
+    <!-- OPEN GRAPH / SOCIAL -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AdbHunter PRO v2.0 — Android Security &amp; Rescue Suite">
+    <meta property="og:description" content="Caza adware en tiempo real con entropía de Shannon, rescata pantallas rotas a 60 FPS y migra datos entre marcas a 40 MB/s en 2 clics sin root.">
+    <meta property="og:image" content="logo.png">
+
+    <!-- GOOGLE FONTS: Press Start 2P, Share Tech Mono, Space Grotesk, VT323 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&family=Space+Grotesk:wght@300;400;500;600;700&family=VT323&display=swap" rel="stylesheet">
+
     <style>
-        /* ============================================
-           DESIGN SYSTEM - VARIABLES
-           ============================================ */
+        /* ==========================================================================
+           CYBER ARCADE DESIGN SYSTEM — AdbHunter PRO v2.0
+           ========================================================================== */
         :root {
-            --primary: #00e676;
-            --primary-rgb: 0, 230, 118;
-            --primary-dark: #00c853;
-            --primary-glow: rgba(0, 230, 118, 0.15);
-            --secondary: #40c4ff;
-            --secondary-rgb: 64, 196, 255;
-            --accent: #ff5252;
-            --accent-rgb: 255, 82, 82;
+            /* Cyber Neon Palette */
+            --matrix-green: #00FF66;
+            --matrix-glow: rgba(0, 255, 102, 0.4);
+            --matrix-dim: #008f39;
+            
+            --cyber-cyan: #00F0FF;
+            --cyan-glow: rgba(0, 240, 255, 0.4);
+            --cyan-dim: #008b99;
 
-            --bg-deep: #060610;
-            --bg-base: #0c0c1d;
-            --bg-surface: #141428;
-            --bg-elevated: #1c1c38;
-            --bg-hover: #24244a;
+            --arcade-yellow: #FFE600;
+            --yellow-glow: rgba(255, 230, 0, 0.4);
 
-            --text-primary: #eaeaff;
-            --text-secondary: #9e9ec0;
-            --text-muted: #6a6a8e;
+            --alert-red: #FF2A55;
+            --red-glow: rgba(255, 42, 85, 0.45);
 
-            --border-subtle: rgba(255, 255, 255, 0.06);
-            --border-accent: rgba(0, 230, 118, 0.2);
+            --cyber-purple: #B026FF;
+            --purple-glow: rgba(176, 38, 255, 0.35);
 
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 16px;
-            --radius-xl: 24px;
+            /* Background Hierarchy */
+            --bg-canvas: #050811;
+            --bg-base: #070D1E;
+            --bg-surface: #0D152D;
+            --bg-card: #0F1A36;
+            --bg-card-hover: #142245;
+            --bg-terminal: #03050B;
 
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-            --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
-            --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
-            --shadow-glow: 0 0 30px rgba(var(--primary-rgb), 0.15);
+            /* Borders & Grid */
+            --border-subtle: #1E293B;
+            --border-glow: #1E3A5F;
+            --border-neon: rgba(0, 240, 255, 0.4);
+            --border-matrix: rgba(0, 255, 102, 0.4);
 
-            --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Text Colors */
+            --text-main: #F1F5F9;
+            --text-secondary: #94A3B8;
+            --text-dim: #64748B;
+            --text-mono: #A5F3FC;
 
-            --header-height: 72px;
+            /* Typography */
+            --font-arcade: 'Press Start 2P', monospace;
+            --font-terminal: 'Share Tech Mono', 'VT323', monospace;
+            --font-display: 'VT323', monospace;
+            --font-body: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+
+            /* Layout */
+            --header-height: 76px;
+            --container-max: 1240px;
+            --radius-arcade: 4px;
+            --radius-card: 10px;
         }
 
-        /* ============================================
-           RESET & BASE
-           ============================================ */
-        *,
-        *::before,
-        *::after {
+        /* RESET & BASE */
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -66,1090 +84,2228 @@
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: var(--header-height);
+            scroll-padding-top: calc(var(--header-height) + 20px);
+            background-color: var(--bg-canvas);
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background: var(--bg-deep);
-            color: var(--text-primary);
-            line-height: 1.6;
+            font-family: var(--font-body);
+            background-color: var(--bg-canvas);
+            color: var(--text-main);
+            line-height: 1.65;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            position: relative;
         }
 
-        img {
+        /* CYBER GRID BACKGROUND & SCANLINES */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: 
+                radial-gradient(circle at 50% 15%, rgba(0, 240, 255, 0.08) 0%, transparent 60%),
+                radial-gradient(circle at 85% 65%, rgba(0, 255, 102, 0.05) 0%, transparent 50%),
+                linear-gradient(to right, rgba(30, 41, 59, 0.18) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(30, 41, 59, 0.18) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 48px 48px, 48px 48px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                rgba(18, 16, 16, 0) 50%, 
+                rgba(0, 0, 0, 0.25) 50%
+            );
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 999;
+            opacity: 0.65;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--container-max);
+            margin: 0 auto;
+            padding: 0 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* TYPOGRAPHY UTILITIES */
+        .font-arcade {
+            font-family: var(--font-arcade);
+            letter-spacing: 0.02em;
+        }
+
+        .font-terminal {
+            font-family: var(--font-terminal);
+        }
+
+        .neon-green {
+            color: var(--matrix-green);
+            text-shadow: 0 0 12px var(--matrix-glow);
+        }
+
+        .neon-cyan {
+            color: var(--cyber-cyan);
+            text-shadow: 0 0 12px var(--cyan-glow);
+        }
+
+        .neon-yellow {
+            color: var(--arcade-yellow);
+            text-shadow: 0 0 12px var(--yellow-glow);
+        }
+
+        .neon-red {
+            color: var(--alert-red);
+            text-shadow: 0 0 12px var(--red-glow);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #FFFFFF 20%, var(--cyber-cyan) 65%, var(--matrix-green) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ASCII BADGES */
+        .cyber-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: var(--font-terminal);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            padding: 4px 12px;
+            border-radius: var(--radius-arcade);
+            background: rgba(13, 21, 45, 0.8);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-mono);
+            text-transform: uppercase;
+        }
+
+        .cyber-badge.green {
+            border-color: var(--matrix-green);
+            color: var(--matrix-green);
+            background: rgba(0, 255, 102, 0.08);
+            box-shadow: 0 0 12px rgba(0, 255, 102, 0.2);
+        }
+
+        .cyber-badge.cyan {
+            border-color: var(--cyber-cyan);
+            color: var(--cyber-cyan);
+            background: rgba(0, 240, 255, 0.08);
+            box-shadow: 0 0 12px rgba(0, 240, 255, 0.2);
+        }
+
+        .cyber-badge.yellow {
+            border-color: var(--arcade-yellow);
+            color: var(--arcade-yellow);
+            background: rgba(255, 230, 0, 0.08);
+            box-shadow: 0 0 12px rgba(255, 230, 0, 0.2);
+        }
+
+        .cyber-badge.red {
+            border-color: var(--alert-red);
+            color: var(--alert-red);
+            background: rgba(255, 42, 85, 0.08);
+            box-shadow: 0 0 12px rgba(255, 42, 85, 0.2);
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--matrix-green);
+            box-shadow: 0 0 8px var(--matrix-green);
+            animation: pulseLed 1.4s infinite ease-in-out;
+        }
+
+        @keyframes pulseLed {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.35; transform: scale(0.85); }
+        }
+
+        /* ==========================================================================
+           CYBER NAVBAR
+           ========================================================================== */
+        header.cyber-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background: rgba(5, 8, 17, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--border-glow);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        header.cyber-header.scrolled {
+            background: rgba(5, 8, 17, 0.98);
+            border-bottom-color: var(--border-neon);
+            box-shadow: 0 4px 24px rgba(0, 240, 255, 0.12);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .brand-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+        }
+
+        .brand-logo {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.5));
+            transition: transform 0.3s ease;
+        }
+
+        .brand-wrapper:hover .brand-logo {
+            transform: scale(1.08) rotate(3deg);
+        }
+
+        .brand-title {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .brand-name {
+            font-family: var(--font-arcade);
+            font-size: 0.95rem;
+            color: #FFFFFF;
+            letter-spacing: -0.02em;
+        }
+
+        .brand-sub {
+            font-family: var(--font-terminal);
+            font-size: 0.75rem;
+            color: var(--cyber-cyan);
+            letter-spacing: 0.1em;
+        }
+
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-family: var(--font-terminal);
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            padding: 6px 10px;
+            border-radius: var(--radius-arcade);
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .nav-link::before {
+            content: "[";
+            color: var(--text-dim);
+            margin-right: 4px;
+            transition: color 0.2s;
+        }
+
+        .nav-link::after {
+            content: "]";
+            color: var(--text-dim);
+            margin-left: 4px;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--cyber-cyan);
+            text-shadow: 0 0 8px var(--cyan-glow);
+            background: rgba(0, 240, 255, 0.05);
+        }
+
+        .nav-link:hover::before,
+        .nav-link:hover::after {
+            color: var(--matrix-green);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .btn-cyber {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-family: var(--font-arcade);
+            font-size: 0.72rem;
+            padding: 12px 20px;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            border-radius: var(--radius-arcade);
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid transparent;
+        }
+
+        .btn-cyber.primary {
+            background: linear-gradient(135deg, #00FF66 0%, #00CC52 100%);
+            color: #050811;
+            font-weight: 900;
+            box-shadow: 0 0 20px rgba(0, 255, 102, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.4);
+            border-color: #00FF66;
+        }
+
+        .btn-cyber.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 30px rgba(0, 255, 102, 0.7), inset 0 0 15px rgba(255, 255, 255, 0.6);
+            background: linear-gradient(135deg, #33FF85 0%, #00FF66 100%);
+        }
+
+        .btn-cyber.secondary {
+            background: rgba(13, 21, 45, 0.85);
+            color: var(--cyber-cyan);
+            border: 1px solid var(--cyber-cyan);
+            box-shadow: 0 0 14px rgba(0, 240, 255, 0.2);
+        }
+
+        .btn-cyber.secondary:hover {
+            transform: translateY(-2px);
+            background: rgba(0, 240, 255, 0.15);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.5);
+            color: #FFFFFF;
+        }
+
+        .btn-cyber.warning {
+            background: rgba(255, 42, 85, 0.15);
+            color: var(--alert-red);
+            border: 1px solid var(--alert-red);
+            box-shadow: 0 0 14px rgba(255, 42, 85, 0.25);
+        }
+
+        .btn-cyber.warning:hover {
+            background: var(--alert-red);
+            color: #050811;
+            box-shadow: 0 0 25px rgba(255, 42, 85, 0.6);
+        }
+
+        /* Mobile Hamburger */
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: 1px solid var(--border-glow);
+            color: var(--cyber-cyan);
+            padding: 8px;
+            border-radius: var(--radius-arcade);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .menu-toggle:hover {
+            border-color: var(--cyber-cyan);
+            box-shadow: 0 0 10px var(--cyan-glow);
+        }
+
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: min(320px, 85vw);
+            height: 100vh;
+            background: var(--bg-base);
+            border-left: 1px solid var(--border-neon);
+            padding: 32px 24px;
+            z-index: 1050;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.8);
+        }
+
+        .mobile-drawer.active {
+            right: 0;
+        }
+
+        .mobile-drawer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(4px);
+            z-index: 1040;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-drawer-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* ==========================================================================
+           HERO SECTION
+           ========================================================================== */
+        .hero-section {
+            padding-top: calc(var(--header-height) + 40px);
+            padding-bottom: 70px;
+            position: relative;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-banner-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .hero-title {
+            font-family: var(--font-arcade);
+            font-size: clamp(1.6rem, 3.4vw, 2.7rem);
+            line-height: 1.35;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-title-sub {
             display: block;
-            max-width: 100%;
+            font-size: clamp(0.9rem, 1.8vw, 1.35rem);
+            margin-top: 12px;
+            color: var(--cyber-cyan);
+            text-shadow: 0 0 14px var(--cyan-glow);
         }
 
-        /* ============================================
-           ANIMATIONS
-           ============================================ */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
+        .hero-lead {
+            font-size: 1.12rem;
+            color: var(--text-secondary);
+            margin-bottom: 28px;
+            line-height: 1.7;
+            max-width: 620px;
+        }
+
+        .hero-lead strong {
+            color: #FFFFFF;
+            font-weight: 600;
+        }
+
+        .hero-stats-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .stat-badge-box {
+            background: rgba(13, 21, 45, 0.7);
+            border: 1px solid var(--border-glow);
+            padding: 10px 14px;
+            border-radius: var(--radius-arcade);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .stat-badge-box:hover {
+            border-color: var(--matrix-green);
+            transform: translateY(-2px);
+        }
+
+        .stat-badge-icon {
+            font-family: var(--font-terminal);
+            color: var(--matrix-green);
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .stat-badge-text {
+            font-family: var(--font-terminal);
+            font-size: 0.85rem;
+            color: var(--text-mono);
+            letter-spacing: 0.04em;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        /* LIVE CYBER TERMINAL SIMULATOR */
+        .terminal-window {
+            background: var(--bg-terminal);
+            border: 1px solid var(--border-neon);
+            border-radius: var(--radius-card);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.85), 0 0 25px rgba(0, 240, 255, 0.15);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .terminal-header {
+            background: #0B1124;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-glow);
+        }
+
+        .terminal-dots {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .terminal-dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+        }
+
+        .terminal-dot.red { background: #FF5F56; }
+        .terminal-dot.yellow { background: #FFBD2E; }
+        .terminal-dot.green { background: #27C93F; }
+
+        .terminal-title {
+            font-family: var(--font-terminal);
+            font-size: 0.82rem;
+            color: var(--text-mono);
+            letter-spacing: 0.05em;
+        }
+
+        .terminal-status-tag {
+            font-family: var(--font-terminal);
+            font-size: 0.75rem;
+            color: var(--matrix-green);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .terminal-body {
+            padding: 18px 20px;
+            font-family: var(--font-terminal);
+            font-size: 0.88rem;
+            line-height: 1.6;
+            color: #CBD5E1;
+            min-height: 330px;
+            max-height: 380px;
+            overflow-y: auto;
+            background: linear-gradient(180deg, #03050B 0%, #060B18 100%);
+        }
+
+        .terminal-line {
+            margin-bottom: 8px;
+            word-break: break-all;
+            opacity: 0;
+            transform: translateY(6px);
+            animation: terminalIn 0.3s forwards cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        @keyframes terminalIn {
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        @keyframes pulseGlow {
-            0%, 100% { box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.2); }
-            50% { box-shadow: 0 0 40px rgba(var(--primary-rgb), 0.4); }
-        }
+        .t-prompt { color: var(--matrix-green); font-weight: 700; margin-right: 6px; }
+        .t-cyan { color: var(--cyber-cyan); }
+        .t-yellow { color: var(--arcade-yellow); }
+        .t-red { color: var(--alert-red); }
+        .t-green { color: var(--matrix-green); }
+        .t-mono { color: var(--text-mono); }
+        .t-dim { color: var(--text-dim); }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); }
-        }
-
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .animate-on-scroll.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ============================================
-           HEADER
-           ============================================ */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: var(--header-height);
-            background: rgba(6, 6, 16, 0.8);
-            backdrop-filter: blur(20px) saturate(180%);
-            -webkit-backdrop-filter: blur(20px) saturate(180%);
-            border-bottom: 1px solid var(--border-subtle);
+        .terminal-footer {
+            background: #080E20;
+            border-top: 1px solid var(--border-subtle);
+            padding: 10px 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 clamp(16px, 4vw, 40px);
-            z-index: 1000;
-            transition: background var(--transition-base);
+            gap: 10px;
         }
 
-        header.scrolled {
-            background: rgba(6, 6, 16, 0.95);
-            border-bottom-color: var(--border-accent);
+        .terminal-action-btn {
+            background: rgba(0, 240, 255, 0.08);
+            border: 1px solid var(--border-glow);
+            color: var(--cyber-cyan);
+            font-family: var(--font-terminal);
+            font-size: 0.78rem;
+            padding: 6px 12px;
+            border-radius: var(--radius-arcade);
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
+        .terminal-action-btn:hover {
+            border-color: var(--cyber-cyan);
+            background: rgba(0, 240, 255, 0.2);
+            color: #FFFFFF;
+            box-shadow: 0 0 10px var(--cyan-glow);
         }
 
-        .logo img {
-            width: 38px;
-            height: 38px;
-            border-radius: var(--radius-sm);
+        /* ==========================================================================
+           SECTION HEADERS & HUD FRAMES
+           ========================================================================== */
+        .section-padding {
+            padding: 90px 0;
+            position: relative;
         }
 
-        .logo span {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--text-primary);
-            letter-spacing: 1px;
+        .section-header-cyber {
+            text-align: center;
+            max-width: 820px;
+            margin: 0 auto 56px auto;
         }
 
-        .header-right {
-            display: flex;
+        .section-eyebrow {
+            display: inline-flex;
             align-items: center;
             gap: 8px;
+            margin-bottom: 16px;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 4px;
+        .section-title {
+            font-family: var(--font-arcade);
+            font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+            line-height: 1.4;
+            margin-bottom: 18px;
+            letter-spacing: -0.02em;
         }
 
-        .nav-links a {
+        .section-desc {
+            font-size: 1.05rem;
             color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 14px;
-            padding: 8px 16px;
-            border-radius: var(--radius-sm);
-            transition: color var(--transition-fast), background var(--transition-fast);
+            line-height: 1.65;
         }
 
-        .nav-links a:hover {
-            color: var(--text-primary);
-            background: var(--bg-hover);
+        /* ==========================================================================
+           EL ARSENAL DE 6 ARMAS (FEATURES GRID)
+           ========================================================================== */
+        .arsenal-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
         }
 
-        .btn-download-header {
-            background: var(--primary);
-            color: var(--bg-deep);
-            padding: 10px 22px;
-            border-radius: var(--radius-sm);
-            font-weight: 700;
-            font-size: 13px;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-left: 12px;
-            transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
-        }
-
-        .btn-download-header:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-glow);
-            background: var(--primary-dark);
-        }
-
-        /* Hamburger button */
-        .menu-toggle {
-            display: none;
-            background: transparent;
-            border: 1px solid var(--border-accent);
-            color: var(--primary);
-            width: 44px;
-            height: 44px;
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            font-size: 20px;
-            transition: background var(--transition-fast), border-color var(--transition-fast);
-            align-items: center;
-            justify-content: center;
-        }
-
-        .menu-toggle:hover {
-            background: var(--primary-glow);
-            border-color: var(--primary);
-        }
-
-        /* ============================================
-           MOBILE MENU OVERLAY
-           ============================================ */
-        .nav-mobile-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(6, 6, 16, 0.6);
-            backdrop-filter: blur(8px);
-            z-index: 998;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity var(--transition-base), visibility var(--transition-base);
-        }
-
-        .nav-mobile-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .nav-mobile {
-            position: fixed;
-            top: 0;
-            right: 0;
-            width: min(320px, 85vw);
-            height: 100vh;
-            background: var(--bg-surface);
-            border-left: 1px solid var(--border-subtle);
-            z-index: 999;
+        .cyber-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-card);
+            padding: 28px 24px;
             display: flex;
             flex-direction: column;
-            padding: 88px 24px 24px;
-            gap: 8px;
-            transform: translateX(100%);
-            transition: transform var(--transition-base);
-        }
-
-        .nav-mobile.active {
-            transform: translateX(0);
-        }
-
-        .nav-mobile a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            padding: 14px 20px;
-            background: var(--bg-elevated);
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border-subtle);
-            transition: all var(--transition-fast);
-        }
-
-        .nav-mobile a:hover,
-        .nav-mobile a:active {
-            background: var(--primary-glow);
-            color: var(--primary);
-            border-color: var(--border-accent);
-        }
-
-        .nav-mobile .btn-mobile-download {
-            margin-top: 16px;
-            background: var(--primary);
-            color: var(--bg-deep);
-            font-weight: 700;
-            text-align: center;
-            border: none;
-        }
-
-        /* ============================================
-           HERO
-           ============================================ */
-        .hero {
-            padding: calc(var(--header-height) + 60px) 20px 100px;
-            text-align: center;
             position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
+        .cyber-card::before {
+            content: "";
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                radial-gradient(ellipse 60% 50% at 50% 0%, rgba(var(--primary-rgb), 0.08) 0%, transparent 70%),
-                radial-gradient(ellipse 40% 40% at 70% 20%, rgba(var(--secondary-rgb), 0.05) 0%, transparent 60%),
-                linear-gradient(180deg, var(--bg-base) 0%, var(--bg-deep) 100%);
-            pointer-events: none;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 720px;
-            margin: 0 auto;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--primary-glow);
-            border: 1px solid var(--border-accent);
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-size: 13px;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 32px;
-            letter-spacing: 0.5px;
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        .hero h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(36px, 6vw, 60px);
-            font-weight: 900;
-            line-height: 1.15;
-            margin-bottom: 24px;
-            animation: fadeInUp 0.6s ease-out 0.1s both;
-        }
-
-        .hero h1 .highlight {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero h1 .accent {
-            color: var(--accent);
-        }
-
-        .hero p {
-            font-size: clamp(16px, 2.5vw, 19px);
-            color: var(--text-secondary);
-            margin-bottom: 48px;
-            max-width: 560px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: fadeInUp 0.6s ease-out 0.2s both;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeInUp 0.6s ease-out 0.3s both;
-        }
-
-        .btn-hero {
-            padding: 16px 32px;
-            border-radius: var(--radius-md);
-            font-weight: 700;
-            font-size: 15px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: all var(--transition-fast);
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-hero.primary {
-            background: var(--primary);
-            color: var(--bg-deep);
-            box-shadow: 0 4px 20px rgba(var(--primary-rgb), 0.3);
-        }
-
-        .btn-hero.primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(var(--primary-rgb), 0.4);
-            background: var(--primary-dark);
-        }
-
-        .btn-hero.secondary {
-            background: var(--bg-elevated);
-            color: var(--text-primary);
-            border: 1px solid var(--border-subtle);
-        }
-
-        .btn-hero.secondary:hover {
-            transform: translateY(-3px);
-            border-color: var(--text-muted);
-            background: var(--bg-hover);
-        }
-
-        /* ============================================
-           FEATURES
-           ============================================ */
-        .features {
-            padding: 100px clamp(20px, 5vw, 40px);
-            background: var(--bg-base);
-            position: relative;
-        }
-
-        .features::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border-accent), transparent);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-header h2 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: clamp(24px, 4vw, 34px);
-            font-weight: 700;
-            margin-bottom: 14px;
-        }
-
-        .section-header p {
-            color: var(--text-secondary);
-            font-size: 17px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .feature-card {
-            background: var(--bg-surface);
-            padding: 32px 28px;
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border-subtle);
-            transition: all var(--transition-base);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--cyber-cyan), transparent);
             opacity: 0;
-            transition: opacity var(--transition-base);
+            transition: opacity 0.3s ease;
         }
 
-        .feature-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--border-accent);
-            box-shadow: var(--shadow-glow);
+        .cyber-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--border-neon);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 240, 255, 0.15);
+            background: var(--bg-card-hover);
         }
 
-        .feature-card:hover::before {
+        .cyber-card:hover::before {
             opacity: 1;
         }
 
-        .feature-icon {
+        .card-top-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .card-code {
+            font-family: var(--font-terminal);
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--matrix-green);
+            letter-spacing: 0.08em;
+        }
+
+        .card-icon-frame {
             width: 52px;
             height: 52px;
+            border-radius: var(--radius-arcade);
+            background: rgba(13, 21, 45, 0.9);
+            border: 1px solid var(--border-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 20px;
-            border-radius: var(--radius-md);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform var(--transition-base);
+            color: var(--cyber-cyan);
+            transition: all 0.3s;
         }
 
-        .feature-card:hover .feature-icon {
-            transform: scale(1.1);
+        .cyber-card:hover .card-icon-frame {
+            border-color: var(--cyber-cyan);
+            box-shadow: 0 0 16px var(--cyan-glow);
+            transform: scale(1.08);
         }
 
-        .feature-icon svg {
-            width: 26px;
-            height: 26px;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 2;
-            stroke-linecap: round;
-            stroke-linejoin: round;
+        .card-title {
+            font-family: var(--font-arcade);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #FFFFFF;
+            margin-bottom: 12px;
         }
 
-        .feature-card h3 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--text-primary);
+        .card-subtitle {
+            font-family: var(--font-terminal);
+            font-size: 0.85rem;
+            color: var(--arcade-yellow);
+            margin-bottom: 14px;
+            display: block;
+            letter-spacing: 0.03em;
         }
 
-        .feature-card p {
+        .card-desc {
+            font-size: 0.92rem;
             color: var(--text-secondary);
-            font-size: 15px;
             line-height: 1.6;
+            margin-bottom: 20px;
+            flex-grow: 1;
         }
 
-        /* ============================================
-           VIDEO SECTION
-           ============================================ */
-        .video-section {
-            padding: 100px clamp(20px, 5vw, 40px);
-            text-align: center;
-            background: var(--bg-deep);
-        }
-
-        .video-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: var(--bg-surface);
-            border-radius: var(--radius-xl);
-            border: 1px solid var(--border-subtle);
-            aspect-ratio: 16/9;
+        .card-tags {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+            border-top: 1px dashed var(--border-subtle);
+            padding-top: 16px;
+        }
+
+        .tech-pill {
+            font-family: var(--font-terminal);
+            font-size: 0.72rem;
+            color: var(--text-mono);
+            background: rgba(3, 5, 11, 0.7);
+            border: 1px solid var(--border-glow);
+            padding: 3px 8px;
+            border-radius: 3px;
+        }
+
+        /* ==========================================================================
+           WORKFLOW & RESCUE ARCHITECTURE
+           ========================================================================== */
+        .workflow-box {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-card);
+            padding: 36px 32px;
             position: relative;
+            margin-top: 30px;
+        }
+
+        .workflow-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            position: relative;
+        }
+
+        .workflow-step-card {
+            background: var(--bg-terminal);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-arcade);
+            padding: 20px 18px;
+            position: relative;
+            transition: all 0.25s;
+        }
+
+        .workflow-step-card:hover {
+            border-color: var(--matrix-green);
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.2);
+        }
+
+        .step-number {
+            font-family: var(--font-terminal);
+            font-size: 0.82rem;
+            color: var(--arcade-yellow);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .step-title {
+            font-family: var(--font-arcade);
+            font-size: 0.78rem;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .step-text {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* ==========================================================================
+           TABLA COMPARATIVA: EL DILEMA DEL TÉCNICO
+           ========================================================================== */
+        .comparison-wrapper {
+            overflow-x: auto;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-card);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            margin-top: 20px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+            min-width: 820px;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 18px 22px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .comparison-table th {
+            font-family: var(--font-terminal);
+            font-size: 0.95rem;
+            letter-spacing: 0.06em;
+            background: #091024;
+            color: #FFFFFF;
+            border-bottom: 2px solid var(--border-glow);
+        }
+
+        .comparison-table th.col-pro {
+            background: rgba(0, 255, 102, 0.08);
+            border-top: 3px solid var(--matrix-green);
+            color: var(--matrix-green);
+            font-family: var(--font-arcade);
+            font-size: 0.82rem;
+        }
+
+        .comparison-table td.col-pro {
+            background: rgba(0, 255, 102, 0.03);
+            border-left: 1px solid rgba(0, 255, 102, 0.2);
+            border-right: 1px solid rgba(0, 255, 102, 0.2);
+            font-weight: 500;
+        }
+
+        .comparison-table tr:hover td {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .comparison-table tr:hover td.col-pro {
+            background-color: rgba(0, 255, 102, 0.07);
+        }
+
+        .status-cross {
+            color: var(--alert-red);
+            font-family: var(--font-terminal);
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .status-check {
+            color: var(--matrix-green);
+            font-family: var(--font-terminal);
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ==========================================================================
+           VIDEO DEMO SECTION
+           ========================================================================== */
+        .video-box-container {
+            max-width: 960px;
+            margin: 0 auto;
+            background: var(--bg-terminal);
+            border: 1px solid var(--border-neon);
+            border-radius: var(--radius-card);
             overflow: hidden;
-            transition: border-color var(--transition-base), box-shadow var(--transition-base);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 240, 255, 0.15);
         }
 
-        .video-container:hover {
-            border-color: var(--border-accent);
-            box-shadow: var(--shadow-md);
+        .video-top-bar {
+            background: #0B1124;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-glow);
         }
 
-        .video-container iframe {
+        .video-player-frame {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            background: #000000;
+        }
+
+        .video-player-frame iframe {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            border: none;
+            border: 0;
         }
 
-        .video-play-btn {
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            background: var(--primary-glow);
-            border: 2px solid var(--border-accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            animation: pulseGlow 3s ease-in-out infinite;
-        }
-
-        .video-play-btn svg {
-            width: 28px;
-            height: 28px;
-            fill: var(--primary);
-            margin-left: 3px;
-        }
-
-        .video-label {
-            color: var(--text-muted);
-            font-size: 15px;
-            font-weight: 500;
-        }
-
-        /* ============================================
-           DOWNLOAD
-           ============================================ */
-        .download {
-            padding: 100px clamp(20px, 5vw, 40px) 60px;
-            background: var(--bg-base);
-            text-align: center;
-            position: relative;
-        }
-
-        .download::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--border-accent), transparent);
-        }
-
-        .platforms {
-            display: flex;
-            gap: 24px;
-            justify-content: center;
-            margin-top: 50px;
-            flex-wrap: wrap;
-        }
-
-        .platform-card {
-            background: var(--bg-surface);
-            padding: 36px 32px;
-            border-radius: var(--radius-lg);
-            width: 280px;
-            border: 1px solid var(--border-subtle);
-            transition: all var(--transition-base);
-            text-align: center;
-        }
-
-        .platform-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--border-accent);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .platform-icon {
-            width: 56px;
-            height: 56px;
-            margin: 0 auto 20px;
-            border-radius: var(--radius-md);
-            background: var(--bg-elevated);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .platform-icon svg {
-            width: 28px;
-            height: 28px;
-        }
-
-        .platform-card h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 20px;
-            margin-bottom: 8px;
-            color: var(--text-primary);
-        }
-
-        .platform-card .platform-desc {
-            color: var(--text-muted);
-            margin-bottom: 24px;
-            font-size: 14px;
-        }
-
-        .platform-card .btn-platform {
-            display: block;
-            background: var(--primary);
-            color: var(--bg-deep);
-            padding: 14px;
-            border-radius: var(--radius-sm);
-            font-weight: 700;
-            text-decoration: none;
-            font-size: 14px;
-            transition: all var(--transition-fast);
-        }
-
-        .platform-card .btn-platform:hover {
-            background: var(--primary-dark);
-            box-shadow: 0 4px 16px rgba(var(--primary-rgb), 0.3);
-        }
-
-        .platform-card .manual-link {
-            display: inline-block;
-            margin-top: 14px;
-            color: var(--text-muted);
-            font-size: 13px;
-            text-decoration: none;
-            transition: color var(--transition-fast);
-        }
-
-        .platform-card .manual-link:hover {
-            color: var(--primary);
-        }
-
-        /* ============================================
-           WARNING BOX
-           ============================================ */
-        .warning-section {
-            padding: 0 clamp(20px, 5vw, 40px) 80px;
-            background: var(--bg-base);
-        }
-
-        .warning-box {
-            max-width: 680px;
+        /* ==========================================================================
+           FAQ ACCORDION
+           ========================================================================== */
+        .faq-grid {
+            max-width: 920px;
             margin: 0 auto;
-            padding: 24px 32px;
-            background: rgba(var(--accent-rgb), 0.06);
-            border: 1px solid rgba(var(--accent-rgb), 0.15);
-            border-radius: var(--radius-lg);
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
-        .warning-header {
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-card);
+            overflow: hidden;
+            transition: all 0.25s ease;
+        }
+
+        .faq-item.active {
+            border-color: var(--cyber-cyan);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            background: transparent;
+            border: none;
+            padding: 22px 24px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
-            color: var(--accent);
+            justify-content: space-between;
+            cursor: pointer;
+            color: #FFFFFF;
+            font-family: var(--font-body);
+            font-size: 1.05rem;
+            font-weight: 600;
+            gap: 16px;
+        }
+
+        .faq-q-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .faq-num {
+            font-family: var(--font-terminal);
+            color: var(--cyber-cyan);
             font-weight: 700;
-            font-size: 16px;
-            margin-bottom: 10px;
         }
 
-        .warning-header svg {
-            width: 20px;
-            height: 20px;
-            fill: none;
-            stroke: currentColor;
-            stroke-width: 2;
+        .faq-icon {
+            font-family: var(--font-terminal);
+            font-size: 1.2rem;
+            color: var(--cyber-cyan);
+            transition: transform 0.3s ease;
         }
 
-        .warning-box p {
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+            color: var(--matrix-green);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(3, 5, 11, 0.6);
+            border-top: 1px solid transparent;
+        }
+
+        .faq-item.active .faq-answer {
+            border-top-color: var(--border-subtle);
+        }
+
+        .faq-answer-inner {
+            padding: 20px 24px 24px 24px;
+            font-size: 0.96rem;
             color: var(--text-secondary);
-            font-size: 14px;
             line-height: 1.7;
         }
 
-        /* ============================================
-           FOOTER
-           ============================================ */
-        footer {
-            padding: 48px clamp(20px, 5vw, 40px);
-            text-align: center;
-            background: var(--bg-deep);
-            border-top: 1px solid var(--border-subtle);
+        .faq-answer-inner strong {
+            color: #FFFFFF;
         }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 24px;
-            flex-wrap: wrap;
+        /* ==========================================================================
+           DOWNLOAD SUITE SECTION
+           ========================================================================== */
+        .download-platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 40px;
         }
 
-        .footer-links a {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            padding: 12px 22px;
-            background: var(--bg-surface);
-            border-radius: var(--radius-sm);
+        .download-card {
+            background: var(--bg-card);
             border: 1px solid var(--border-subtle);
-            font-size: 14px;
-            font-weight: 500;
-            transition: all var(--transition-fast);
+            border-radius: var(--radius-card);
+            padding: 32px 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
         }
 
-        .footer-links a:hover {
-            color: var(--primary);
-            border-color: var(--border-accent);
-            background: var(--primary-glow);
-            transform: translateY(-2px);
+        .download-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--matrix-green);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), 0 0 25px rgba(0, 255, 102, 0.2);
         }
 
-        .footer-links a svg {
-            width: 18px;
-            height: 18px;
+        .platform-icon-wrapper {
+            width: 72px;
+            height: 72px;
+            border-radius: 12px;
+            background: rgba(13, 21, 45, 0.8);
+            border: 1px solid var(--border-glow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
         }
 
-        .footer-copy {
-            color: var(--text-muted);
-            font-size: 14px;
+        .platform-icon-wrapper img {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+        }
+
+        .platform-os-title {
+            font-family: var(--font-arcade);
+            font-size: 1rem;
+            color: #FFFFFF;
             margin-bottom: 8px;
         }
 
-        .footer-copy strong {
+        .platform-version-tag {
+            font-family: var(--font-terminal);
+            font-size: 0.85rem;
+            color: var(--cyber-cyan);
+            margin-bottom: 18px;
+        }
+
+        .platform-specs-list {
+            list-style: none;
+            font-family: var(--font-terminal);
+            font-size: 0.82rem;
+            color: var(--text-dim);
+            margin-bottom: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .download-action-btn {
+            width: 100%;
+            margin-bottom: 12px;
+        }
+
+        .instructions-link {
+            font-family: var(--font-terminal);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .instructions-link:hover {
+            color: var(--arcade-yellow);
+            text-decoration: underline;
+        }
+
+        .system-req-banner {
+            background: rgba(13, 21, 45, 0.7);
+            border: 1px solid var(--border-glow);
+            border-radius: var(--radius-card);
+            padding: 24px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .req-col-title {
+            font-family: var(--font-terminal);
+            font-size: 0.9rem;
+            color: var(--arcade-yellow);
+            margin-bottom: 4px;
+            font-weight: 700;
+        }
+
+        .req-col-desc {
+            font-size: 0.88rem;
             color: var(--text-secondary);
         }
 
-        .footer-credit {
-            color: var(--text-muted);
-            font-size: 12px;
+        /* ==========================================================================
+           CYBER FOOTER & LEGAL BANNER
+           ========================================================================== */
+        footer.cyber-footer {
+            background: #03050B;
+            border-top: 1px solid var(--border-glow);
+            padding: 60px 0 30px 0;
+            position: relative;
+            z-index: 10;
         }
 
-        .footer-credit a {
-            color: var(--primary);
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand-summary {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            margin-top: 16px;
+            line-height: 1.6;
+            max-width: 400px;
+        }
+
+        .footer-col-header {
+            font-family: var(--font-terminal);
+            font-size: 0.95rem;
+            color: var(--matrix-green);
+            margin-bottom: 18px;
+            letter-spacing: 0.08em;
+        }
+
+        .footer-links-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-link-item a {
+            font-family: var(--font-terminal);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
             text-decoration: none;
-            transition: color var(--transition-fast);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
         }
 
-        .footer-credit a:hover {
-            color: var(--primary-dark);
+        .footer-link-item a:hover {
+            color: var(--cyber-cyan);
+            transform: translateX(4px);
         }
 
-        /* ============================================
-           RESPONSIVE
-           ============================================ */
-        @media (max-width: 768px) {
-            :root {
-                --header-height: 64px;
-            }
+        .footer-legal-notice {
+            background: rgba(255, 42, 85, 0.06);
+            border: 1px dashed rgba(255, 42, 85, 0.4);
+            border-radius: var(--radius-arcade);
+            padding: 16px 20px;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
 
-            .header-right {
-                display: none;
-            }
+        .footer-legal-icon {
+            font-family: var(--font-terminal);
+            color: var(--alert-red);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
 
-            .menu-toggle {
-                display: flex;
-            }
+        .footer-legal-text {
+            font-size: 0.85rem;
+            color: #CBD5E1;
+            line-height: 1.5;
+        }
 
-            .hero {
-                padding-top: calc(var(--header-height) + 40px);
-                padding-bottom: 60px;
-            }
+        .footer-bottom-bar {
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-family: var(--font-terminal);
+            font-size: 0.82rem;
+            color: var(--text-dim);
+        }
 
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
+        .footer-creator {
+            color: var(--matrix-green);
+            text-decoration: none;
+            font-weight: 700;
+        }
 
-            .btn-hero {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
-            }
+        .footer-creator:hover {
+            text-decoration: underline;
+        }
 
-            .features-grid {
+        /* ==========================================================================
+           ANIMATIONS & RESPONSIVENESS
+           ========================================================================== */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        .reveal-on-scroll.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 1024px) {
+            .hero-grid {
                 grid-template-columns: 1fr;
             }
-
-            .features,
-            .video-section,
-            .download {
-                padding-top: 60px;
-                padding-bottom: 60px;
+            .arsenal-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
-
-            .platforms {
-                flex-direction: column;
-                align-items: center;
+            .workflow-steps {
+                grid-template-columns: repeat(2, 1fr);
             }
-
-            .platform-card {
-                width: 100%;
-                max-width: 320px;
+            .download-platforms-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
 
-            .footer-links {
-                flex-direction: column;
-                align-items: center;
+        @media (max-width: 768px) {
+            :root {
+                --header-height: 68px;
+            }
+            .nav-menu, .nav-actions .btn-cyber {
+                display: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .hero-stats-row {
+                grid-template-columns: 1fr;
+            }
+            .arsenal-grid {
+                grid-template-columns: 1fr;
+            }
+            .workflow-steps {
+                grid-template-columns: 1fr;
+            }
+            .download-platforms-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            .comparison-table th,
+            .comparison-table td {
+                padding: 12px 14px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- HEADER -->
-    <header id="site-header">
-        <a href="#" class="logo">
-            <img src="logo.png" alt="AdbHunter">
-            <span>AdbHunter</span>
-        </a>
-        <div class="header-right">
-            <nav class="nav-links">
-                <a href="#features">Características</a>
-                <a href="#video">Video</a>
-                <a href="#download">Descargar</a>
-            </nav>
-            <a href="#download" class="btn-download-header">Descargar</a>
+
+    <!-- CRT Scanlines Overlay -->
+    <div class="scanlines" aria-hidden="true"></div>
+
+    <!-- ==========================================================================
+         CYBER NAVBAR
+         ========================================================================== -->
+    <header class="cyber-header" id="cyber-header">
+        <div class="container nav-container">
+            <a href="#" class="brand-wrapper" title="AdbHunter PRO v2.0">
+                <img src="logo.png" alt="AdbHunter Logo" class="brand-logo">
+                <div class="brand-title">
+                    <span class="brand-name">ADBHUNTER <span class="neon-green">PRO</span></span>
+                    <span class="brand-sub">// ANDROID SECURITY SUITE</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <ul class="nav-menu">
+                <li><a href="#arsenal" class="nav-link">ARSENAL</a></li>
+                <li><a href="#rescate" class="nav-link">RESCATE</a></li>
+                <li><a href="#respaldo" class="nav-link">RESPALDO</a></li>
+                <li><a href="#comparativa" class="nav-link">COMPARATIVA</a></li>
+                <li><a href="#faq" class="nav-link">FAQ</a></li>
+                <li><a href="#descargar" class="nav-link">DESCARGAR</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <div class="cyber-badge green">
+                    <span class="pulse-dot"></span>
+                    <span>[PRO_v2.0_ONLINE]</span>
+                </div>
+                <a href="#descargar" class="btn-cyber primary">
+                    [ DESCARGAR ]
+                </a>
+                <button class="menu-toggle" id="menu-btn" aria-label="Abrir Menú de Navegación">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <line x1="3" y1="12" x2="21" y2="12"/>
+                        <line x1="3" y1="18" x2="21" y2="18"/>
+                    </svg>
+                </button>
+            </div>
         </div>
-        <button id="menu-btn" class="menu-toggle" aria-label="Abrir menú de navegación">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-                <line x1="3" y1="6" x2="21" y2="6"/>
-                <line x1="3" y1="12" x2="21" y2="12"/>
-                <line x1="3" y1="18" x2="21" y2="18"/>
-            </svg>
-        </button>
     </header>
 
-    <!-- MOBILE MENU -->
-    <div id="mobile-overlay" class="nav-mobile-overlay"></div>
-    <nav id="mobile-nav" class="nav-mobile">
-        <a href="#features">Características</a>
-        <a href="#video">Video</a>
-        <a href="#download">Descargar</a>
-        <a href="#download" class="btn-mobile-download">⬇ Descargar Ahora</a>
-    </nav>
-
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-badge">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                Herramienta para Técnicos de Celulares
-            </div>
-            <h1>
-                Elimina <span class="highlight">Malware</span><br>
-                de tu <span class="accent">Android</span>
-            </h1>
-            <p>
-                La herramienta que todo técnico de celulares necesita. Monitorea, cierra y elimina 
-                aplicaciones no deseadas en tiempo real desde tu PC. Agiliza tu servicio técnico y 
-                deja feliz a cada cliente.
-            </p>
-            <div class="hero-buttons">
-                <a href="#download" class="btn-hero primary">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    Descargar Ahora
-                </a>
-                <a href="#video" class="btn-hero secondary">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                    Ver Demo
-                </a>
-            </div>
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer-overlay" id="mobile-overlay"></div>
+    <div class="mobile-drawer" id="mobile-drawer">
+        <div class="brand-title">
+            <span class="brand-name">ADBHUNTER <span class="neon-green">PRO</span></span>
+            <span class="brand-sub">// v2.0 MATRIX TERMINAL</span>
         </div>
-    </section>
-
-    <!-- FEATURES -->
-    <section class="features" id="features">
-        <div class="section-header animate-on-scroll">
-            <h2>Características Principales</h2>
-            <p>Potentes herramientas para proteger tu dispositivo Android</p>
+        <div class="cyber-badge green" style="align-self: flex-start;">
+            <span class="pulse-dot"></span>
+            <span>[STATUS: ONLINE]</span>
         </div>
-
-        <div class="features-grid">
-            <div class="feature-card animate-on-scroll">
-                <div class="feature-icon" style="background: linear-gradient(135deg, rgba(var(--accent-rgb), 0.2), rgba(255, 107, 53, 0.2)); color: var(--accent);">
-                    <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                </div>
-                <h3>Monitoreo en Tiempo Real</h3>
-                <p>Detecta instantáneamente qué aplicación está en primer plano. Detén el malware antes de que cause daño.</p>
-            </div>
-
-            <div class="feature-card animate-on-scroll">
-                <div class="feature-icon" style="background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.2), rgba(0, 200, 83, 0.2)); color: var(--primary);">
-                    <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                </div>
-                <h3>Force Stop</h3>
-                <p>Cierra forzosamente cualquier aplicación que resista, incluyendo malware persistente.</p>
-            </div>
-
-            <div class="feature-card animate-on-scroll">
-                <div class="feature-icon" style="background: linear-gradient(135deg, rgba(255, 23, 68, 0.2), rgba(255, 109, 0, 0.2)); color: #ff5252;">
-                    <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
-                </div>
-                <h3>Desinstalar</h3>
-                <p>Elimina directamente del dispositivo aplicaciones no deseadas, adware o malware.</p>
-            </div>
-
-            <div class="feature-card animate-on-scroll">
-                <div class="feature-icon" style="background: linear-gradient(135deg, rgba(var(--secondary-rgb), 0.2), rgba(41, 121, 255, 0.2)); color: var(--secondary);">
-                    <svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0114.08 0"/><path d="M1.42 9a16 16 0 0121.16 0"/><path d="M8.53 16.11a6 6 0 016.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
-                </div>
-                <h3>Wireless</h3>
-                <p>Funciona sin cable USB. Conecta tu Android por WiFi y monitorea sin cables.</p>
-            </div>
-
-            <div class="feature-card animate-on-scroll">
-                <div class="feature-icon" style="background: linear-gradient(135deg, rgba(187, 134, 252, 0.2), rgba(98, 0, 238, 0.2)); color: #bb86fc;">
-                    <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-                </div>
-                <h3>Whitelist</h3>
-                <p>Protege tus aplicaciones importantes para que no se puedan eliminar por accidente.</p>
-            </div>
-
-            <div class="feature-card animate-on-scroll">
-                <div class="feature-icon" style="background: linear-gradient(135deg, rgba(255, 214, 0, 0.2), rgba(255, 171, 0, 0.2)); color: #ffd600;">
-                    <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-                </div>
-                <h3>Ultra Rápido</h3>
-                <p>Monitoreo en tiempo real con respuesta instantánea. No te pierdas ni un segundo.</p>
-            </div>
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 10px;">
+            <a href="#arsenal" class="nav-link mobile-link">[01] ARSENAL</a>
+            <a href="#rescate" class="nav-link mobile-link">[02] RESCATE</a>
+            <a href="#respaldo" class="nav-link mobile-link">[03] RESPALDO</a>
+            <a href="#comparativa" class="nav-link mobile-link">[04] COMPARATIVA</a>
+            <a href="#faq" class="nav-link mobile-link">[05] FAQ TÉCNICO</a>
+            <a href="#descargar" class="nav-link mobile-link">[06] DESCARGAR</a>
         </div>
-    </section>
-
-    <!-- VIDEO -->
-    <section class="video-section" id="video">
-        <div class="section-header animate-on-scroll">
-            <h2>Cómo Funciona</h2>
-            <p>Mira el video demostrativo de AdbHunter en acción</p>
-        </div>
-
-        <div class="video-container animate-on-scroll">
-            <iframe 
-                src="https://www.youtube.com/embed/bmJrglwcru4?si=w3keQS-4a2ycgALt" 
-                title="AdbHunter Demo" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-            </iframe>
-        </div>
-    </section>
-
-    <!-- DOWNLOAD -->
-    <section class="download" id="download">
-        <div class="section-header animate-on-scroll">
-            <h2>Descarga AdbHunter</h2>
-            <p>Elige tu plataforma y empieza a proteger tu Android</p>
-        </div>
-
-        <div class="platforms">
-            <div class="platform-card animate-on-scroll">
-                <div class="platform-icon">
-                    <img src="windowslogo.png" alt="Windows" style="width: 40px; height: 40px;">
-                </div>
-                <h3>Windows</h3>
-                <p class="platform-desc">Compatible con Windows 10/11</p>
-                <a href="downloads/windows/AdbHunter-Install-windows.zip" class="btn-platform">
-                    Descargar para Windows
-                </a>
-                <a href="downloads/windows/INSTRUCTIONS.txt" class="manual-link" download>Ver guía de instalación →</a>
-            </div>
-
-            <div class="platform-card animate-on-scroll">
-                <div class="platform-icon">
-                    <img src="applelogo.png" alt="macOS" style="width: 40px; height: 40px;">
-                </div>
-                <h3>macOS</h3>
-                <p class="platform-desc">Compatible con macOS 11+</p>
-                <a href="downloads/mac/AdbHunter-install-Mac.zip" class="btn-platform">
-                    Descargar para Mac
-                </a>
-                <a href="downloads/mac/INSTRUCTIONS.txt" class="manual-link" download>Ver guía de instalación →</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- WARNING -->
-    <div class="warning-section">
-        <div class="warning-box animate-on-scroll">
-            <div class="warning-header">
-                <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                <span>Importante</span>
-            </div>
-            <p>Usar con responsabilidad. No eliminar apps del sistema Android. El desarrollador no se hace responsable del mal uso de esta herramienta.</p>
+        <div style="margin-top: auto;">
+            <a href="#descargar" class="btn-cyber primary mobile-link" style="width: 100%;">
+                [ > OBTENER v2.0 PRO ]
+            </a>
         </div>
     </div>
 
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-links">
-            <a href="https://t.me/Est3banj" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6.54l-1.1 5.18c-.07.35-.26.44-.53.27l-2.78-2.05-1.34 1.29c-.15.15-.27.27-.56.27l.2-2.82 5.11-4.62c.22-.2-.05-.31-.34-.12L9.74 13.3l-2.73-.85c-.59-.19-.61-.59.12-.87l10.68-4.12c.5-.18.93.12.77.87l.04.21z"/></svg>
-                Telegram
-            </a>
-            <a href="https://github.com/Est3banj" target="_blank" rel="noopener noreferrer">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                GitHub
-            </a>
+    <main>
+        <!-- ==========================================================================
+             HERO SECTION
+             ========================================================================== -->
+        <section class="hero-section">
+            <div class="container hero-grid">
+                <!-- Left Column: Copy & CTAs -->
+                <div class="hero-left-content">
+                    <div class="hero-banner-top">
+                        <span class="cyber-badge cyan">[CORE_v2.0_ACTIVE]</span>
+                        <span class="cyber-badge green">[ZERO_ROOT_REQUIRED]</span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        ADBHUNTER <span class="neon-green">PRO</span>
+                        <span class="hero-title-sub">ANDROID SECURITY &amp; RESCUE SUITE</span>
+                    </h1>
+
+                    <p class="hero-lead">
+                        Caza adware y malware en tiempo real con <strong>Entropía de Shannon</strong>, 
+                        rescata pantallas rotas a <strong>60 FPS con pantalla apagada</strong> y migra datos 
+                        entre marcas en 2 clics a <strong>40 MB/s vía TAR</strong>. Cero Root.
+                    </p>
+
+                    <div class="hero-stats-row">
+                        <div class="stat-badge-box">
+                            <span class="stat-badge-icon">[SYS]</span>
+                            <span class="stat-badge-text">SHANNON ENTROPY SCORE (0-100)</span>
+                        </div>
+                        <div class="stat-badge-box">
+                            <span class="stat-badge-icon">[TAR]</span>
+                            <span class="stat-badge-text">40 MB/s MIGRATION PIPELINE</span>
+                        </div>
+                        <div class="stat-badge-box">
+                            <span class="stat-badge-icon">[FPS]</span>
+                            <span class="stat-badge-text">60 FPS SCRCPY ROTAS RESCUE</span>
+                        </div>
+                        <div class="stat-badge-box">
+                            <span class="stat-badge-icon">[PDF]</span>
+                            <span class="stat-badge-text">SHA-256 CLIENT AUDIT STAMP</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-cta-group">
+                        <a href="#descargar" class="btn-cyber primary">
+                            [ > DESCARGAR v2.0 PRO ]
+                        </a>
+                        <a href="#arsenal" class="btn-cyber secondary">
+                            [ [?] VER ARSENAL ]
+                        </a>
+                        <a href="#video-demo" class="btn-cyber warning">
+                            [ VIDEO_DEMO ]
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Interactive Live Cyber Terminal -->
+                <div class="hero-right-terminal">
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <span class="terminal-dot red"></span>
+                                <span class="terminal-dot yellow"></span>
+                                <span class="terminal-dot green"></span>
+                            </div>
+                            <span class="terminal-title">root@adbhunter-core: ~/live-scanner</span>
+                            <div class="terminal-status-tag">
+                                <span class="pulse-dot"></span>
+                                <span>LIVE</span>
+                            </div>
+                        </div>
+
+                        <div class="terminal-body" id="terminal-body" aria-live="polite">
+                            <div class="terminal-line"><span class="t-prompt">[>]</span> <span class="t-cyan">adbhunter --init-engine --mode=heuristic-shannon</span></div>
+                            <div class="terminal-line"><span class="t-prompt">[+]</span> <span class="t-green">ADB_DAEMON_READY: USB_DEBUGGING_BRIDGE_LINKED</span></div>
+                            <div class="terminal-line"><span class="t-prompt">[*]</span> Dispositivo detectado: <span class="t-yellow">SAMSUNG SM-S928B (Android 14)</span></div>
+                            <div class="terminal-line"><span class="t-prompt">[>]</span> Escaneando procesos de primer plano (DUMPSYS)...</div>
+                            <div class="terminal-line"><span class="t-prompt">[!]</span> <span class="t-red">PAYLOAD_DETECTED:</span> com.stealth.popup.tracker (PID: 9482)</div>
+                            <div class="terminal-line"><span class="t-prompt">[*]</span> Shannon Entropy: <span class="t-red">7.88 bits/byte (PACKED_MALWARE)</span></div>
+                            <div class="terminal-line"><span class="t-prompt">[*]</span> Threat Score: <span class="t-red">85/100 [CRITICAL_ADWARE]</span></div>
+                            <div class="terminal-line"><span class="t-prompt">[>]</span> Ejecutando Triple Candado: <span class="t-cyan">pm disable-user + force-stop</span></div>
+                            <div class="terminal-line"><span class="t-prompt">[SYS_OK]</span> <span class="t-green">AMENAZA NEUTRALIZADA EN 0.28s. INMUNIDAD ACTIVADA.</span></div>
+                            <div class="terminal-line"><span class="t-prompt">[SYS_OK]</span> Certificado PDF generado: <span class="t-mono">SHA256: 8f3c91a40d...</span></div>
+                        </div>
+
+                        <div class="terminal-footer">
+                            <span class="t-dim font-terminal" style="font-size: 0.75rem;">CONSOLE: READY</span>
+                            <div style="display: flex; gap: 8px;">
+                                <button class="terminal-action-btn" id="btn-term-rescan">[RE-SCAN]</button>
+                                <button class="terminal-action-btn" id="btn-term-kill">[KILL_PAYLOAD]</button>
+                                <button class="terminal-action-btn" id="btn-term-clear">[CLEAR]</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             EL ARSENAL DE 6 ARMAS (FEATURES GRID)
+             ========================================================================== -->
+        <section class="section-padding" id="arsenal">
+            <div class="container">
+                <div class="section-header-cyber reveal-on-scroll">
+                    <div class="section-eyebrow">
+                        <span class="cyber-badge green">[ARSENAL_DEFENSIVO_v2.0]</span>
+                    </div>
+                    <h2 class="section-title">
+                        LAS 6 ARMAS DE <span class="neon-cyan">ADBHUNTER PRO</span>
+                    </h2>
+                    <p class="section-desc">
+                        Ingeniería de bajo nivel para técnicos y especialistas en Android. 
+                        Diagnóstico quirúrgico, rescate de hardware y preservación de datos sin arriesgar el sistema operativo.
+                    </p>
+                </div>
+
+                <div class="arsenal-grid">
+                    <!-- ARMA 01 -->
+                    <div class="cyber-card reveal-on-scroll">
+                        <div class="card-top-meta">
+                            <span class="card-code">[01_THREAT_INSPECTOR]</span>
+                            <span class="cyber-badge red">[HEURISTIC]</span>
+                        </div>
+                        <div class="card-icon-frame">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                        </div>
+                        <h3 class="card-title">Threat Scoring &amp; Entropía de Shannon</h3>
+                        <span class="card-subtitle">Scoring Heurístico (0-100) + Triple Candado</span>
+                        <p class="card-desc">
+                            Algoritmo matemático de Shannon para medir aleatoriedad en binarios DEX y detectar malware ofuscado o empaquetado. Neutralización atómica con Triple Candado de Inmunidad (<code class="t-cyan">force-stop</code>, <code class="t-cyan">disable-user</code> y revocación de permisos).
+                        </p>
+                        <div class="card-tags">
+                            <span class="tech-pill">SHANNON_ENTROPY</span>
+                            <span class="tech-pill">HEURISTIC_0-100</span>
+                            <span class="tech-pill">TRIPLE_LOCK</span>
+                        </div>
+                    </div>
+
+                    <!-- ARMA 02 -->
+                    <div class="cyber-card reveal-on-scroll">
+                        <div class="card-top-meta">
+                            <span class="card-code">[02_DATA_VAULT]</span>
+                            <span class="cyber-badge green">[40_MB/S]</span>
+                        </div>
+                        <div class="card-icon-frame">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        </div>
+                        <h3 class="card-title">Respaldo Multi-Marca TAR</h3>
+                        <span class="card-subtitle">Extracción y Migración a 40 MB/s Sin MTP</span>
+                        <p class="card-desc">
+                            Bypass del lento e inestable protocolo MTP de Windows mediante tuberías directas <code class="t-cyan">tar stream</code> vía ADB. Respaldo íntegro de WhatsApp (<code class="t-cyan">com.whatsapp</code>), DCIM fotos originales, Contactos CSV/VCF y restauración cruzada entre marcas.
+                        </p>
+                        <div class="card-tags">
+                            <span class="tech-pill">TAR_PIPELINE</span>
+                            <span class="tech-pill">WHATSAPP_RESTORE</span>
+                            <span class="tech-pill">CROSS_BRAND</span>
+                        </div>
+                    </div>
+
+                    <!-- ARMA 03 -->
+                    <div class="cyber-card reveal-on-scroll">
+                        <div class="card-top-meta">
+                            <span class="card-code">[03_SCRCPY_MIRROR]</span>
+                            <span class="cyber-badge cyan">[60_FPS]</span>
+                        </div>
+                        <div class="card-icon-frame">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        </div>
+                        <h3 class="card-title">Espejo Scrcpy Pantallas Rotas</h3>
+                        <span class="card-subtitle">Control a 60 FPS con Pantalla Apagada</span>
+                        <p class="card-desc">
+                            Rescata dispositivos con display destrozado o táctil inservible. Inyección de binario Scrcpy optimizado con baja latencia (&lt;30ms) a 60 FPS y modo <code class="t-cyan">--turn-screen-off</code> para evitar sobrecalentamiento y ahorrar batería en reparaciones largas.
+                        </p>
+                        <div class="card-tags">
+                            <span class="tech-pill">TOUCH_BYPASS</span>
+                            <span class="tech-pill">TURN_SCREEN_OFF</span>
+                            <span class="tech-pill">60FPS_STREAM</span>
+                        </div>
+                    </div>
+
+                    <!-- ARMA 04 -->
+                    <div class="cyber-card reveal-on-scroll">
+                        <div class="card-top-meta">
+                            <span class="card-code">[04_SAFE_DEBLOATER]</span>
+                            <span class="cyber-badge yellow">[39+_PRESETS]</span>
+                        </div>
+                        <div class="card-icon-frame">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg>
+                        </div>
+                        <h3 class="card-title">Debloater Seguro &amp; Reversible</h3>
+                        <span class="card-subtitle">39+ Paquetes Curados (Samsung / Xiaomi / Google)</span>
+                        <p class="card-desc">
+                            Desactiva bloatware invasivo, telemetría y apps basura de operadoras usando <code class="t-cyan">pm disable-user --user 0</code>. Protege la partición <code class="t-cyan">/system</code> para evitar bootloops y permite revertir cualquier cambio en 1 clic.
+                        </p>
+                        <div class="card-tags">
+                            <span class="tech-pill">PM_DISABLE_USER</span>
+                            <span class="tech-pill">ANTI_BOOTLOOP</span>
+                            <span class="tech-pill">1_CLICK_ROLLBACK</span>
+                        </div>
+                    </div>
+
+                    <!-- ARMA 05 -->
+                    <div class="cyber-card reveal-on-scroll">
+                        <div class="card-top-meta">
+                            <span class="card-code">[05_RESCUE_WIZARD]</span>
+                            <span class="cyber-badge cyan">[AT_MODEM]</span>
+                        </div>
+                        <div class="card-icon-frame">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        </div>
+                        <h3 class="card-title">Rescue Wizard &amp; Inyección AT</h3>
+                        <span class="card-subtitle">FSM de Diagnóstico &amp; Activación Samsung *#0*#</span>
+                        <p class="card-desc">
+                            Autómata de estados finitos que guía el rescate paso a paso. Inyección de comandos AT en puertos de módem Samsung para habilitación de depuración USB en equipos bloqueados, escape de Safe Mode y resolución de bucles de inicio.
+                        </p>
+                        <div class="card-tags">
+                            <span class="tech-pill">AT_MODEM_CMD</span>
+                            <span class="tech-pill">SAMSUNG_*#0*#</span>
+                            <span class="tech-pill">SAFE_MODE_FSM</span>
+                        </div>
+                    </div>
+
+                    <!-- ARMA 06 -->
+                    <div class="cyber-card reveal-on-scroll">
+                        <div class="card-top-meta">
+                            <span class="card-code">[06_PDF_CERTIFICATE]</span>
+                            <span class="cyber-badge green">[ISO_32000-1]</span>
+                        </div>
+                        <div class="card-icon-frame">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                        </div>
+                        <h3 class="card-title">Certificado PDF con Sello SHA-256</h3>
+                        <span class="card-subtitle">Auditoría Técnica Oficial para Clientes</span>
+                        <p class="card-desc">
+                            Genera reportes de servicio técnico en PDF con formato profesional ISO 32000-1. Detalla amenazas eliminadas, paquetes optimizados, estado de salud de batería y firma criptográfica SHA-256 para comprobante de garantía técnica.
+                        </p>
+                        <div class="card-tags">
+                            <span class="tech-pill">SHA256_INTEGRITY</span>
+                            <span class="tech-pill">ISO_32000_PDF</span>
+                            <span class="tech-pill">CLIENT_AUDIT</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             RESCUE & BACKUP WORKFLOW ARCHITECTURE
+             ========================================================================== -->
+        <section class="section-padding" id="rescate" style="background: rgba(7, 13, 30, 0.6);">
+            <div class="container">
+                <div class="section-header-cyber reveal-on-scroll">
+                    <div class="section-eyebrow">
+                        <span class="cyber-badge cyan">[PIPELINE_DE_CIRUGIA]</span>
+                    </div>
+                    <h2 class="section-title">
+                        FLUJO DE <span class="neon-green">RESCATE Y CIRUGÍA</span>
+                    </h2>
+                    <p class="section-desc">
+                        De equipo infectado o con pantalla destrozada a celular optimizado y respaldado en 4 pasos deterministas.
+                    </p>
+                </div>
+
+                <div class="workflow-box reveal-on-scroll" id="respaldo">
+                    <div class="workflow-steps">
+                        <div class="workflow-step-card">
+                            <div class="step-number">// FASE_01</div>
+                            <h4 class="step-title">CONEXIÓN ADB</h4>
+                            <p class="step-text">Detección instantánea por cable USB o WiFi sin drivers engorrosos ni instalaciones en el celular.</p>
+                        </div>
+
+                        <div class="workflow-step-card">
+                            <div class="step-number">// FASE_02</div>
+                            <h4 class="step-title">SHANNON SCAN</h4>
+                            <p class="step-text">Inspección de procesos activos, cálculo de entropía DEX y scoring de riesgo heurístico (0 a 100).</p>
+                        </div>
+
+                        <div class="workflow-step-card">
+                            <div class="step-number">// FASE_03</div>
+                            <h4 class="step-title">CIRUGÍA ATÓMICA</h4>
+                            <p class="step-text">Desarme de adware, debloater seguro y apertura de espejo Scrcpy a 60 FPS si el touch no responde.</p>
+                        </div>
+
+                        <div class="workflow-step-card">
+                            <div class="step-number">// FASE_04</div>
+                            <h4 class="step-title">TAR BACKUP &amp; PDF</h4>
+                            <p class="step-text">Extracción de datos a 40 MB/s y emisión de reporte PDF con hash criptográfico SHA-256.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             TABLA COMPARATIVA: EL DILEMA DEL TÉCNICO
+             ========================================================================== -->
+        <section class="section-padding" id="comparativa">
+            <div class="container">
+                <div class="section-header-cyber reveal-on-scroll">
+                    <div class="section-eyebrow">
+                        <span class="cyber-badge yellow">[METRICAS_COMPARATIVAS]</span>
+                    </div>
+                    <h2 class="section-title">
+                        EL DILEMA DEL TÉCNICO: <span class="neon-yellow">¿FORMATEAR O REPARAR?</span>
+                    </h2>
+                    <p class="section-desc">
+                        Comparación directa entre métodos obsoletos y la tecnología de precisión de AdbHunter PRO v2.0.
+                    </p>
+                </div>
+
+                <div class="comparison-wrapper reveal-on-scroll">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>PARÁMETRO / ESCENARIO</th>
+                                <th>FORMATEO HARD RESET</th>
+                                <th>EXTRACCIÓN MTP MANUAL</th>
+                                <th class="col-pro">[>] ADBHUNTER PRO v2.0</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Preservación de Datos</strong></td>
+                                <td><span class="status-cross">[X] Pérdida total (Fotos, Chats)</span></td>
+                                <td><span class="status-cross">[!] Incompleta / Errores MTP</span></td>
+                                <td class="col-pro"><span class="status-check">[SYS_OK] 100% de datos preservados</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Velocidad de Transferencia</strong></td>
+                                <td><span class="status-cross">[X] N/A (Se borra todo)</span></td>
+                                <td><span class="status-cross">[!] 2 a 5 MB/s (Lentísimo)</span></td>
+                                <td class="col-pro"><span class="status-check">[SYS_OK] 40 MB/s (Tubería TAR ADB)</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pantalla Rota / Touch Muerto</strong></td>
+                                <td><span class="status-cross">[X] Imposible configurar</span></td>
+                                <td><span class="status-cross">[X] Bloqueado por PIN/Touch</span></td>
+                                <td class="col-pro"><span class="status-check">[SYS_OK] Scrcpy 60 FPS + Pantalla OFF</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Detección de Adware Oculto</strong></td>
+                                <td><span class="status-cross">[X] No detecta (Se reinstala)</span></td>
+                                <td><span class="status-cross">[X] Cero análisis</span></td>
+                                <td class="col-pro"><span class="status-check">[SYS_OK] Entropía Shannon + Heurística</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tiempo de Trabajo por Equipo</strong></td>
+                                <td><span class="status-cross">[!] 45 - 90 minutos</span></td>
+                                <td><span class="status-cross">[!] 60 - 120 minutos</span></td>
+                                <td class="col-pro"><span class="status-check">[SYS_OK] 3 a 5 minutos por cliente</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Comprobante de Servicio</strong></td>
+                                <td><span class="status-cross">[X] Ninguno</span></td>
+                                <td><span class="status-cross">[X] Ninguno</span></td>
+                                <td class="col-pro"><span class="status-check">[SYS_OK] Certificado PDF SHA-256 Oficial</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             VIDEO DEMOSTRATIVO EN VIVO
+             ========================================================================== -->
+        <section class="section-padding" id="video-demo" style="background: rgba(5, 8, 17, 0.9);">
+            <div class="container">
+                <div class="section-header-cyber reveal-on-scroll">
+                    <div class="section-eyebrow">
+                        <span class="cyber-badge green">[DEMO_EN_VIVO]</span>
+                    </div>
+                    <h2 class="section-title">
+                        MIRA A <span class="neon-cyan">ADBHUNTER PRO</span> EN ACCIÓN
+                    </h2>
+                    <p class="section-desc">
+                        Demostración paso a paso: Monitoreo en tiempo real, detección de procesos parásitos y rescate quirúrgico.
+                    </p>
+                </div>
+
+                <div class="video-box-container reveal-on-scroll">
+                    <div class="video-top-bar">
+                        <div class="terminal-dots">
+                            <span class="terminal-dot red"></span>
+                            <span class="terminal-dot yellow"></span>
+                            <span class="terminal-dot green"></span>
+                        </div>
+                        <span class="font-terminal" style="font-size: 0.85rem; color: var(--text-mono);">YOUTUBE_STREAM: AdbHunter Demo Walkthrough</span>
+                        <span class="cyber-badge green" style="padding: 2px 8px; font-size: 0.72rem;">1080p_HD</span>
+                    </div>
+                    <div class="video-player-frame">
+                        <iframe 
+                            src="https://www.youtube.com/embed/bmJrglwcru4?si=w3keQS-4a2ycgALt" 
+                            title="AdbHunter PRO Demo" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             PREGUNTAS FRECUENTES (FAQ)
+             ========================================================================== -->
+        <section class="section-padding" id="faq">
+            <div class="container">
+                <div class="section-header-cyber reveal-on-scroll">
+                    <div class="section-eyebrow">
+                        <span class="cyber-badge cyan">[BASE_DE_CONOCIMIENTO]</span>
+                    </div>
+                    <h2 class="section-title">
+                        PREGUNTAS <span class="neon-cyan">FRECUENTES</span>
+                    </h2>
+                    <p class="section-desc">
+                        Respuestas directas a las dudas técnicas más comunes de técnicos, laboratorios y usuarios avanzados.
+                    </p>
+                </div>
+
+                <div class="faq-grid">
+                    <!-- Q1 -->
+                    <div class="faq-item reveal-on-scroll">
+                        <button class="faq-question" aria-expanded="false">
+                            <div class="faq-q-title">
+                                <span class="faq-num">[01]</span>
+                                <span>¿AdbHunter PRO v2.0 requiere que el dispositivo tenga acceso ROOT?</span>
+                            </div>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                <strong>No, bajo ningún concepto.</strong> AdbHunter PRO opera al 100% mediante los protocolos de depuración oficiales de Android Debug Bridge (ADB). Aprovecha comandos de usuario administrador local como <code class="t-cyan">pm disable-user</code>, volcados <code class="t-cyan">dumpsys</code> y tuberías de datos <code class="t-cyan">tar</code> sin modificar la partición <code class="t-cyan">/system</code> ni anular garantías de seguridad Knox o SafetyNet/Play Integrity.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="faq-item reveal-on-scroll">
+                        <button class="faq-question" aria-expanded="false">
+                            <div class="faq-q-title">
+                                <span class="faq-num">[02]</span>
+                                <span>¿Qué marcas y versiones de Android son compatibles?</span>
+                            </div>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                Compatible con <strong>Android 5.0 (Lollipop) hasta Android 15+</strong>. Funciona con todas las capas de personalización del mercado: <strong>Samsung (One UI), Xiaomi/POCO/Redmi (MIUI y HyperOS), Motorola, Google Pixel, Huawei, OPPO, Realme, Vivo, OnePlus, Infinix, Tecno</strong> y procesadores Qualcomm, MediaTek, Exynos y Unisoc.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="faq-item reveal-on-scroll">
+                        <button class="faq-question" aria-expanded="false">
+                            <div class="faq-q-title">
+                                <span class="faq-num">[03]</span>
+                                <span>¿Es seguro para las aplicaciones bancarias y datos personales del cliente?</span>
+                            </div>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                <strong>Es 100% privado y seguro.</strong> AdbHunter PRO opera de manera completamente local y fuera de línea en tu computadora. No envía información a servidores externos ni lee contraseñas. La desinfección de adware no toca los datos de apps bancarias, y las copias de seguridad TAR son extracciones bit a bit de los directorios de usuario autorizados.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q4 -->
+                    <div class="faq-item reveal-on-scroll">
+                        <button class="faq-question" aria-expanded="false">
+                            <div class="faq-q-title">
+                                <span class="faq-num">[04]</span>
+                                <span>¿Cómo funciona el rescate con pantalla rota y táctil inoperativo?</span>
+                            </div>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                Mediante el motor <strong>Scrcpy Mirror integrado</strong>. Al conectar el equipo por USB con depuración activa (o tras inyección por puerto AT en dispositivos compatibles), AdbHunter levanta un stream de video de baja latencia a <strong>60 FPS</strong>. Podés controlar el móvil con el teclado y ratón de tu PC mientras la pantalla física del teléfono permanece apagada con <code class="t-cyan">--turn-screen-off</code>.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q5 -->
+                    <div class="faq-item reveal-on-scroll">
+                        <button class="faq-question" aria-expanded="false">
+                            <div class="faq-q-title">
+                                <span class="faq-num">[05]</span>
+                                <span>¿Cuál es la diferencia entre desinstalar y congelar con el Debloater?</span>
+                            </div>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                Al usar <code class="t-cyan">pm disable-user --user 0</code>, el paquete deja de ejecutarse, libera memoria RAM y no consume batería ni telemetría, pero su instalador de fábrica queda preservado en la partición base. Esto elimina cualquier riesgo de bootloop (bucle de reinicio) y permite restaurar cualquier app en 1 segundo si el cliente la necesita nuevamente.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Q6 -->
+                    <div class="faq-item reveal-on-scroll">
+                        <button class="faq-question" aria-expanded="false">
+                            <div class="faq-q-title">
+                                <span class="faq-num">[06]</span>
+                                <span>¿Cómo genero el Certificado PDF de servicio técnico y para qué sirve?</span>
+                            </div>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                Tras finalizar la desinfección o respaldo, hacés clic en <strong>[ GENERAR REPORTE ]</strong>. AdbHunter compila un documento PDF formal con el modelo, número de serie/IMEI sanitizado, listado de paquetes neutralizados y un <strong>sello criptográfico SHA-256</strong> inviolable. Es el comprobante ideal para entregar al cliente como garantía de trabajo profesional.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================================
+             SECCIÓN DE DESCARGA
+             ========================================================================== -->
+        <section class="section-padding" id="descargar" style="background: rgba(7, 13, 30, 0.7);">
+            <div class="container">
+                <div class="section-header-cyber reveal-on-scroll">
+                    <div class="section-eyebrow">
+                        <span class="cyber-badge green">[DISTRIBUCION_OFICIAL]</span>
+                    </div>
+                    <h2 class="section-title">
+                        DESCARGA <span class="neon-green">ADBHUNTER PRO v2.0</span>
+                    </h2>
+                    <p class="section-desc">
+                        Elegí tu sistema operativo y equipá tu laboratorio técnico con la suite definitiva de ciberseguridad Android.
+                    </p>
+                </div>
+
+                <div class="download-platforms-grid">
+                    <!-- macOS -->
+                    <div class="download-card reveal-on-scroll">
+                        <div class="platform-icon-wrapper">
+                            <img src="applelogo.png" alt="macOS Icon">
+                        </div>
+                        <h3 class="platform-os-title">macOS Edition</h3>
+                        <span class="platform-version-tag">Apple Silicon (M1/M2/M3/M4) &amp; Intel</span>
+                        <ul class="platform-specs-list">
+                            <li>[+] Universal Binary DMG / ZIP</li>
+                            <li>[+] macOS 11 Big Sur hasta macOS 15+</li>
+                            <li>[+] 60 FPS Scrcpy Metal Ready</li>
+                        </ul>
+                        <a href="downloads/mac/AdbHunter-install-Mac.zip" class="btn-cyber primary download-action-btn">
+                            [ DESCARGAR MAC ]
+                        </a>
+                        <a href="downloads/mac/INSTRUCTIONS.txt" class="instructions-link" download>
+                            [?] Ver Guía de Instalación Mac &rarr;
+                        </a>
+                    </div>
+
+                    <!-- Windows -->
+                    <div class="download-card reveal-on-scroll" style="border-color: var(--border-neon); box-shadow: 0 0 20px rgba(0, 240, 255, 0.1);">
+                        <div class="platform-icon-wrapper">
+                            <img src="windowslogo.png" alt="Windows Icon">
+                        </div>
+                        <h3 class="platform-os-title">Windows Edition</h3>
+                        <span class="platform-version-tag">Windows 10 / 11 (64-bit)</span>
+                        <ul class="platform-specs-list">
+                            <li>[+] Auto-configurador ADB integrado</li>
+                            <li>[+] Soporte Samsung USB Drivers</li>
+                            <li>[+] Tubería TAR de alta velocidad</li>
+                        </ul>
+                        <a href="downloads/windows/AdbHunter-Install-windows.zip" class="btn-cyber primary download-action-btn">
+                            [ DESCARGAR WINDOWS ]
+                        </a>
+                        <a href="downloads/windows/INSTRUCTIONS.txt" class="instructions-link" download>
+                            [?] Ver Guía de Instalación Windows &rarr;
+                        </a>
+                    </div>
+
+                    <!-- Linux -->
+                    <div class="download-card reveal-on-scroll">
+                        <div class="platform-icon-wrapper">
+                            <div class="font-arcade neon-yellow" style="font-size: 1.4rem;">[TUX]</div>
+                        </div>
+                        <h3 class="platform-os-title">Linux / Dev</h3>
+                        <span class="platform-version-tag">Ubuntu, Debian, Fedora, Arch</span>
+                        <ul class="platform-specs-list">
+                            <li>[+] Python 3.10+ &amp; ADB Udev Rules</li>
+                            <li>[+] TTY &amp; CLI Native Terminal</li>
+                            <li>[+] Código fuente en GitHub</li>
+                        </ul>
+                        <a href="https://github.com/Est3banj" target="_blank" rel="noopener noreferrer" class="btn-cyber secondary download-action-btn">
+                            [ VER EN GITHUB ]
+                        </a>
+                        <span class="font-terminal t-dim" style="font-size: 0.78rem;">git clone &amp; pip install</span>
+                    </div>
+                </div>
+
+                <!-- System Requirements Bar -->
+                <div class="system-req-banner reveal-on-scroll">
+                    <div>
+                        <div class="req-col-title">[REQUISITOS_DEL_SISTEMA]</div>
+                        <div class="req-col-desc">Android Debug Bridge (ADB Platform-Tools) &bull; Puerto USB 2.0/3.0 &bull; 50 MB de almacenamiento</div>
+                    </div>
+                    <div class="cyber-badge cyan">
+                        <span>[100%_STANDALONE_PORTABLE]</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==========================================================================
+         CYBER FOOTER
+         ========================================================================== -->
+    <footer class="cyber-footer">
+        <div class="container">
+            <!-- Legal Notice Banner -->
+            <div class="footer-legal-notice">
+                <span class="footer-legal-icon">[AVISO_LEGAL]</span>
+                <p class="footer-legal-text">
+                    AdbHunter PRO v2.0 es una herramienta diseñada para mantenimiento, diagnóstico y seguridad técnica autorizada de dispositivos móviles. El usuario es responsable de verificar la titularidad del equipo antes de realizar modificaciones o extracciones de datos.
+                </p>
+            </div>
+
+            <div class="footer-grid">
+                <!-- Col 1: Brand & Bio -->
+                <div>
+                    <div class="brand-wrapper">
+                        <img src="logo.png" alt="AdbHunter Logo" style="width: 38px; height: 38px;">
+                        <span class="brand-name font-arcade" style="font-size: 0.95rem;">ADBHUNTER <span class="neon-green">PRO</span></span>
+                    </div>
+                    <p class="footer-brand-summary">
+                        La suite definitiva de ciberseguridad, debloating seguro y rescate de celulares Android para técnicos profesionales y usuarios avanzados.
+                    </p>
+                </div>
+
+                <!-- Col 2: Navigation Links -->
+                <div>
+                    <h4 class="footer-col-header">// MODULOS_CORE</h4>
+                    <ul class="footer-links-list">
+                        <li class="footer-link-item"><a href="#arsenal">[>] Threat Inspector (Shannon)</a></li>
+                        <li class="footer-link-item"><a href="#arsenal">[>] Data Vault (TAR 40 MB/s)</a></li>
+                        <li class="footer-link-item"><a href="#arsenal">[>] Scrcpy Mirror (Pantallas Rotas)</a></li>
+                        <li class="footer-link-item"><a href="#arsenal">[>] Safe Debloater (39+ Presets)</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Community & Social -->
+                <div>
+                    <h4 class="footer-col-header">// CONTACTO_Y_DEV</h4>
+                    <ul class="footer-links-list">
+                        <li class="footer-link-item">
+                            <a href="https://t.me/Est3banj" target="_blank" rel="noopener noreferrer">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6.54l-1.1 5.18c-.07.35-.26.44-.53.27l-2.78-2.05-1.34 1.29c-.15.15-.27.27-.56.27l.2-2.82 5.11-4.62c.22-.2-.05-.31-.34-.12L9.74 13.3l-2.73-.85c-.59-.19-.61-.59.12-.87l10.68-4.12c.5-.18.93.12.77.87l.04.21z"/></svg>
+                                <span>Telegram Oficial (@Est3banj)</span>
+                            </a>
+                        </li>
+                        <li class="footer-link-item">
+                            <a href="https://github.com/Est3banj" target="_blank" rel="noopener noreferrer">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                <span>GitHub Repository (@Est3banj)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom-bar">
+                <div>
+                    &copy; 2026 <strong>AdbHunter PRO</strong> — Android Cyber Security Suite.
+                </div>
+                <div>
+                    Desarrollado por <a href="https://t.me/Est3banj" target="_blank" rel="noopener noreferrer" class="footer-creator">@Est3banj</a>
+                </div>
+            </div>
         </div>
-        <p class="footer-copy">
-            © 2026 <strong>AdbHunter</strong> — Tecnología de seguridad Android
-        </p>
-        <p class="footer-credit">
-            Hecho con ❤️ por <a href="https://t.me/Est3banj" target="_blank" rel="noopener noreferrer">@Est3banj</a>
-        </p>
     </footer>
 
-    <!-- SCRIPTS -->
+    <!-- ==========================================================================
+         INTERACTIVE CYBER ENGINE SCRIPTS
+         ========================================================================== -->
     <script>
-        // Mobile menu toggle
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileNav = document.getElementById('mobile-nav');
-        const overlay = document.getElementById('mobile-overlay');
+        // Header scroll effect
+        const cyberHeader = document.getElementById('cyber-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 40) {
+                cyberHeader.classList.add('scrolled');
+            } else {
+                cyberHeader.classList.remove('scrolled');
+            }
+        }, { passive: true });
 
-        function openMenu() {
-            mobileNav.classList.add('active');
-            overlay.classList.add('active');
+        // Mobile drawer toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const mobileOverlay = document.getElementById('mobile-overlay');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function openDrawer() {
+            mobileDrawer.classList.add('active');
+            mobileOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
 
-        function closeMenu() {
-            mobileNav.classList.remove('active');
-            overlay.classList.remove('active');
+        function closeDrawer() {
+            mobileDrawer.classList.remove('active');
+            mobileOverlay.classList.remove('active');
             document.body.style.overflow = '';
         }
 
-        menuBtn.addEventListener('click', () => {
-            mobileNav.classList.contains('active') ? closeMenu() : openMenu();
+        if (menuBtn) {
+            menuBtn.addEventListener('click', () => {
+                mobileDrawer.classList.contains('active') ? closeDrawer() : openDrawer();
+            });
+        }
+
+        if (mobileOverlay) {
+            mobileOverlay.addEventListener('click', closeDrawer);
+        }
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', closeDrawer);
         });
 
-        overlay.addEventListener('click', closeMenu);
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const questionBtn = item.querySelector('.faq-question');
+            const answer = item.querySelector('.faq-answer');
 
-        // Close mobile menu on nav link click
-        mobileNav.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
+            questionBtn.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
 
-        // Header scroll effect
-        const header = document.getElementById('site-header');
-        let lastScroll = 0;
+                // Close other open accordions
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                        otherItem.querySelector('.faq-answer').style.maxHeight = null;
+                    }
+                });
 
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.scrollY;
-            header.classList.toggle('scrolled', currentScroll > 50);
-            lastScroll = currentScroll;
-        }, { passive: true });
-
-        // Scroll animation observer
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -40px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    // Stagger animations for grid items
-                    const parent = entry.target.parentElement;
-                    const siblings = parent ? Array.from(parent.children).filter(c => c.classList.contains('animate-on-scroll')) : [];
-                    const staggerIndex = siblings.indexOf(entry.target);
-                    const delay = staggerIndex >= 0 ? staggerIndex * 80 : 0;
-
-                    setTimeout(() => {
-                        entry.target.classList.add('is-visible');
-                    }, delay);
-
-                    observer.unobserve(entry.target);
+                if (!isActive) {
+                    item.classList.add('active');
+                    questionBtn.setAttribute('aria-expanded', 'true');
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                } else {
+                    item.classList.remove('active');
+                    questionBtn.setAttribute('aria-expanded', 'false');
+                    answer.style.maxHeight = null;
                 }
             });
-        }, observerOptions);
+        });
 
-        document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+        // Scroll Intersection Observer for smooth reveal
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, idx) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.classList.add('revealed');
+                    }, (idx % 3) * 80);
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.08,
+            rootMargin: '0px 0px -30px 0px'
+        });
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => revealObserver.observe(el));
+
+        // Interactive Live Terminal Simulator
+        const terminalBody = document.getElementById('terminal-body');
+        const btnRescan = document.getElementById('btn-term-rescan');
+        const btnKill = document.getElementById('btn-term-kill');
+        const btnClear = document.getElementById('btn-term-clear');
+
+        const scanSequences = [
+            [
+                { p: '[>]', c: 't-cyan', t: 'adb shell dumpsys activity top | grep ACTIVITY' },
+                { p: '[*]', c: 't-yellow', t: 'Inspeccionando proceso: com.adpush.stealth.overlay (PID: 10421)' },
+                { p: '[!]', c: 't-red', t: 'Calculando Entropía de Shannon: 7.92 bits/byte [ELEVADA_OFUSCACION]' },
+                { p: '[!]', c: 't-red', t: 'Heuristic Threat Score: 92/100 [CRITICAL_AGGRESSIVE_ADWARE]' },
+                { p: '[>]', c: 't-cyan', t: 'pm disable-user --user 0 com.adpush.stealth.overlay' },
+                { p: '[SYS_OK]', c: 't-green', t: 'Disparo atómico exitoso. Proceso neutralizado en 0.19s.' }
+            ],
+            [
+                { p: '[>]', c: 't-cyan', t: 'adbhunter --backup --mode=tar-stream --target=all-media' },
+                { p: '[+]', c: 't-green', t: 'Tubería directa TAR establecida vía ADB Bridge' },
+                { p: '[*]', c: 't-yellow', t: 'Extrayendo /sdcard/Android/media/com.whatsapp... [41.2 MB/s]' },
+                { p: '[*]', c: 't-yellow', t: 'Extrayendo /sdcard/DCIM/Camera... [40.8 MB/s]' },
+                { p: '[SYS_OK]', c: 't-green', t: 'Respaldo TAR completado: 14.8 GB transferidos sin errores MTP.' }
+            ],
+            [
+                { p: '[>]', c: 't-cyan', t: 'adbhunter --scrcpy-mirror --turn-screen-off --fps=60' },
+                { p: '[+]', c: 't-green', t: 'Inyectando Scrcpy Server v2.4 (Hardware Acceleration)' },
+                { p: '[*]', c: 't-yellow', t: 'Pantalla física del móvil apagada para ahorro térmico' },
+                { p: '[SYS_OK]', c: 't-green', t: 'Espejo activo a 60 FPS. Control táctil transferido a mouse/teclado.' }
+            ]
+        ];
+
+        let sequenceIndex = 0;
+
+        function appendTerminalLine(prompt, colorClass, text) {
+            const line = document.createElement('div');
+            line.className = 'terminal-line';
+            line.innerHTML = `<span class="t-prompt">${prompt}</span> <span class="${colorClass}">${text}</span>`;
+            terminalBody.appendChild(line);
+            terminalBody.scrollTop = terminalBody.scrollHeight;
+        }
+
+        function runSequence(seq) {
+            seq.forEach((item, i) => {
+                setTimeout(() => {
+                    appendTerminalLine(item.p, item.c, item.t);
+                }, (i + 1) * 380);
+            });
+        }
+
+        if (btnRescan) {
+            btnRescan.addEventListener('click', () => {
+                appendTerminalLine('[>]', 't-cyan', 'Iniciando escaneo heurístico de memoria...');
+                sequenceIndex = (sequenceIndex + 1) % scanSequences.length;
+                runSequence(scanSequences[sequenceIndex]);
+            });
+        }
+
+        if (btnKill) {
+            btnKill.addEventListener('click', () => {
+                appendTerminalLine('[>]', 't-red', 'EMERGENCY_KILL: am force-stop-all-suspicious');
+                setTimeout(() => {
+                    appendTerminalLine('[SYS_OK]', 't-green', '3 procesos no autorizados terminados forzosamente.');
+                    appendTerminalLine('[SYS_OK]', 't-mono', 'SHA256 STAMP: c94b218f0a1e3d7890bfae4125');
+                }, 300);
+            });
+        }
+
+        if (btnClear) {
+            btnClear.addEventListener('click', () => {
+                terminalBody.innerHTML = '';
+                appendTerminalLine('[SYS_READY]', 't-green', 'Terminal limpia. Esperando órdenes.');
+            });
+        }
     </script>
 </body>
 </html>
